@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Hospitalar TCC - Meu Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #388e3c 0%, #4caf50 100%) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #388e3c 0%, #4caf50 100%);
+            border: none;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #c8e6c9;
+        }
+        .form-control:focus {
+            border-color: #388e3c;
+            box-shadow: 0 0 0 0.25rem rgba(56,142,60,0.25);
+        }
+        .profile-header {
+            background: linear-gradient(135deg, #388e3c 0%, #4caf50 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+            background: #ccc; /* Fallback */
+        }
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            flex: 1;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .list-group-item-action .text-primary {
+            color: #388e3c !important;
+        }
+        .list-group-item-action .text-info {
+            color: #4caf50 !important;
+        }
+        .list-group-item-action .text-success {
+            color: #388e3c !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .card-body {
+                padding: 1rem;
+            }
+            .profile-header {
+                padding: 1rem;
+                text-align: center;
+            }
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .stat-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logosemfundo.png" alt="Sistema Hospitalar TCC" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="fas fa-chart-line me-2"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pacientes.html">
+                            <i class="fas fa-users me-2"></i>Pacientes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prontuarios.html">
+                            <i class="fas fa-file-medical me-2"></i>Prontuários
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="funcionarios.html">
+                            <i class="fas fa-user-md me-2"></i>Funcionários
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="telemedicina.html">
+                            <i class="fas fa-video me-2"></i>Telemedicina
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">
+                            <i class="fas fa-cog me-2"></i>Administração
+                        </a>
+                    </li>
+                    
+                </ul>
+                <div class="d-flex align-items-center" id="userMenu"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div class="profile-header" id="profileHeader">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-3 text-center text-md-start">
+                    <img src="img/perfil.png" class="profile-avatar" alt="Foto de Perfil" onerror="this.src='https://via.placeholder.com/150';">
+                </div>
+                <div class="col-12 col-md-9 text-center text-md-start" id="profileInfo"></div>
+            </div>
+            <div class="profile-stats" id="profileStats"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-user me-2"></i>Informações Pessoais</h5>
+                        <form id="formPerfil">
+                            <input type="hidden" name="id">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Nome Completo</label>
+                                <input type="text" class="form-control" name="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">CRM</label>
+                                <input type="text" class="form-control" name="crm" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Especialidade</label>
+                                <input type="text" class="form-control" name="especialidade" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Email</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Telefone</label>
+                                <input type="tel" class="form-control" name="telefone" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Salvar Alterações
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-lock me-2"></i>Alterar Senha</h5>
+                        <form id="formSenha">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Senha Atual</label>
+                                <input type="password" class="form-control" name="senhaAtual" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Nova Senha</label>
+                                <input type="password" class="form-control" name="novaSenha" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Confirmar Nova Senha</label>
+                                <input type="password" class="form-control" name="confirmarSenha" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-key me-2"></i>Alterar Senha
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-cog me-2"></i>Preferências</h5>
+                        <form id="formPreferencias">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Notificações</label>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" name="notifEmail" id="notifEmail">
+                                    <label class="form-check-label" for="notifEmail">
+                                        Receber notificações por email
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" name="notifSMS" id="notifSMS">
+                                    <label class="form-check-label" for="notifSMS">
+                                        Receber notificações por SMS
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Tema</label>
+                                <select class="form-select" name="tema">
+                                    <option value="light">Claro</option>
+                                    <option value="dark">Escuro</option>
+                                    <option value="system">Sistema</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Idioma</label>
+                                <select class="form-select" name="idioma">
+                                    <option value="pt-BR">Português (Brasil)</option>
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Salvar Preferências
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-history me-2"></i>Histórico de Atividades</h5>
+                        <div class="list-group" id="activityLog"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+</html>

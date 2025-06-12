@@ -1,0 +1,668 @@
+:root {
+    --primary-color: #388e3c; /* Verde primário */
+    --primary-light: #66bb6a; /* Verde claro */
+    --primary-dark: #2e7d32; /* Verde escuro */
+    --secondary-color: #4caf50; /* Verde secundário */
+    --accent-color: #81c784; /* Verde acento */
+    --text-light: #ffffff; /* Texto claro */
+    --text-dark: #1a1a1a; /* Texto escuro */
+    --background-light: #f5f5f5; /* Fundo claro */
+    --background-dark: #424242; /* Fundo escuro */
+    --success-color: #43a047; /* Sucesso (verde) */
+    --warning-color: #ffb300; /* Aviso (amarelo) */
+    --danger-color: #e53935; /* Erro (vermelho) */
+    --info-color: #0288d1; /* Info (azul para contraste) */
+    --background-color: #e8f5e9; /* Fundo geral (verde bem claro) */
+    --card-background: #ffffff; /* Fundo dos cards */
+    --text-primary: #1a1a1a; /* Texto primário */
+    --text-secondary: #616161; /* Texto secundário */
+    --border-color: #c8e6c9; /* Borda (verde claro) */
+    --link-color: #388e3c; /* Links */
+    --link-hover-color: #2e7d32; /* Links hover */
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Barra de Navegação TCC */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--text-light) !important;
+}
+
+.navbar-brand i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.navbar .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.navbar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white !important;
+}
+
+/* Cards TCC */
+.card {
+    background: var(--card-background);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+.card.text-white.bg-primary {
+    background: var(--primary-color) !important;
+}
+
+.card.text-white.bg-success {
+    background: var(--success-color) !important;
+}
+
+.card.text-white.bg-info {
+    background: var(--info-color) !important;
+}
+
+.card.text-white.bg-warning {
+    background: var(--warning-color) !important;
+}
+
+/* Botões TCC */
+.btn {
+    font-weight: 500;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(56, 142, 60, 0.2);
+    background: var(--primary-dark);
+}
+
+.btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: white;
+}
+
+.btn-light {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.btn-light:hover {
+    background-color: #f5f5f5;
+    color: var(--secondary-color);
+}
+
+/* Tabelas TCC */
+.table {
+    margin: 0;
+}
+
+.table th {
+    background-color: var(--primary-light);
+    font-weight: 600;
+    color: var(--text-light);
+    border-bottom: 2px solid var(--border-color);
+    padding: 1rem;
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(56, 142, 60, 0.1);
+}
+
+/* Formulários TCC */
+.form-control {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(56, 142, 60, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Videochamada TCC */
+.video-container {
+    background-color: var(--background-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.video-participant {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background-color: #212121;
+}
+
+.video-participant video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.participant-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.video-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 0 0 12px 12px;
+}
+
+.video-controls button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.video-controls button:hover {
+    transform: scale(1.1);
+}
+
+/* Lista de Itens TCC */
+.list-group-item {
+    border: none;
+    margin-bottom: 0.5rem;
+    border-radius: 8px !important;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f5f5f5;
+}
+
+.list-group-item:hover {
+    background-color: #e8f5e9;
+    transform: translateX(4px);
+}
+
+/* Animações Suaves */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .video-container {
+        margin-bottom: 1rem;
+    }
+
+    .video-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .video-controls button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Tema Escuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1b5e20;
+        --card-background: #388e3c;
+        --text-primary: #e8f5e9;
+        --text-secondary: #a5d6a7;
+        --border-color: #81c784;
+    }
+
+    .table th {
+        background-color: #263238;
+        color: #b0bec5;
+    }
+
+    .table tbody tr:hover {
+        background-color: #37474f;
+    }
+
+    .form-control {
+        background-color: #263238;
+        border-color: #37474f;
+        color: #eceff1;
+    }
+
+    .form-control:focus {
+        background-color: #263238;
+        color: #eceff1;
+    }
+
+    .list-group-item {
+        background-color: #263238;
+        color: #eceff1;
+    }
+
+    .list-group-item:hover {
+        background-color: #37474f;
+    }
+
+    .about-section {
+        background: linear-gradient(135deg, #1b5e20, #388e3c);
+    }
+
+    .about-card {
+        background: rgba(56, 142, 60, 0.9);
+        color: #e8f5e9;
+    }
+
+    .contact-info li {
+        color: #e8f5e9;
+    }
+}
+
+/* Acessibilidade */
+:focus {
+    outline: 3px solid rgba(56, 142, 60, 0.5);
+    outline-offset: 2px;
+}
+
+/* Alto Contraste */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #008000;
+        --text-primary: #000000;
+        --background-color: #ffffff;
+    }
+
+    .card {
+        border: 2px solid #000000;
+    }
+
+    .table th {
+        background-color: #000000;
+        color: #ffffff;
+    }
+}
+
+/* Avatar Circle */
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Notificações Toast */
+.toast {
+    min-width: 300px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+}
+
+.toast.bg-success {
+    background: var(--success-color) !important;
+}
+
+.toast.bg-info {
+    background: var(--info-color) !important;
+}
+
+.toast.bg-warning {
+    background: var(--warning-color) !important;
+}
+
+.toast.bg-danger {
+    background: var(--danger-color) !important;
+}
+
+/* Badges */
+.badge {
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.badge.bg-success {
+    background: var(--success-color) !important;
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #546e7a) !important;
+}
+
+/* Botões de Ação */
+.btn-group {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-group .btn {
+    border: none;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-group .btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-group .btn-info {
+    background: var(--info-color);
+    color: white;
+}
+
+.btn-group .btn-primary {
+    background: var(--primary-color);
+}
+
+.btn-group .btn-danger {
+    background: var(--danger-color);
+}
+
+/* Input Groups */
+.input-group-text {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+    color: var(--text-light);
+}
+
+.input-group .form-control {
+    border-left: none;
+}
+
+.input-group .form-control:focus {
+    border-left: none;
+    box-shadow: none;
+}
+
+/* Selects */
+.form-select {
+    border-color: var(--border-color);
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background-color: var(--card-background);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-select:hover {
+    border-color: var(--primary-color);
+}
+
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.1);
+}
+
+/* Tema Escuro - Elementos Adicionais */
+@media (prefers-color-scheme: dark) {
+    .input-group-text {
+        background-color: #263238;
+        border-color: #37474f;
+        color: #b0bec5;
+    }
+
+    .form-select {
+        background-color: #263238;
+        color: #eceff1;
+    }
+
+    .form-select:hover {
+        border-color: #81c784;
+    }
+
+    .form-select:focus {
+        border-color: #81c784;
+        box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.1);
+    }
+
+    .btn-group .btn {
+        background-color: #263238;
+    }
+
+    .btn-group .btn:hover {
+        background-color: #37474f;
+    }
+}
+
+/* Alto Contraste - Elementos Adicionais */
+@media (prefers-contrast: high) {
+    .avatar-circle {
+        border: 2px solid white;
+    }
+
+    .badge {
+        border: 2px solid white;
+    }
+
+    .btn-group .btn {
+        border: 2px solid black;
+    }
+
+    .form-select {
+        border: 2px solid black;
+    }
+}
+
+/* Seção Sobre o Projeto TCC */
+.about-section {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.about-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.contact-info li i {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    background: var(--secondary-color);
+}
+
+/* Ajuste para textos em fundos escuros */
+.card.text-white .card-title,
+.card.text-white .card-text,
+.card.text-white .form-label {
+    color: var(--text-light) !important;
+}

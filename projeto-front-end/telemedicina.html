@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Hospitalar TCC - Telemedicina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            animation: gradientShift 15s ease infinite;
+            overflow-x: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .navbar {
+            background: linear-gradient(135deg, #388e3c 0%, #4caf50 100%) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #fff !important;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .card-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #388e3c 0%, #4caf50 100%);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #4caf50 0%, #388e3c 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56,142,60,0.4);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.4s ease;
+        }
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+        .btn-danger {
+            background: linear-gradient(90deg, #dc3545 0%, #bb2d3b 100%);
+            border: none;
+        }
+        .btn-outline-primary {
+            border-color: #388e3c;
+            color: #388e3c;
+        }
+        .btn-outline-primary:hover {
+            background: #388e3c;
+            color: #fff;
+        }
+        .btn-outline-danger {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        .btn-outline-danger:hover {
+            background: #dc3545;
+            color: #fff;
+        }
+        .form-control, .form-select {
+            border: 1px solid #c8e6c9;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #388e3c;
+            box-shadow: 0 0 0 0.2rem rgba(56,142,60,0.2);
+            background: #f8fff8;
+        }
+        .input-group-text {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 10px 0 0 10px;
+            color: #388e3c;
+        }
+        .video-container {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .video-box {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .video-box video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-label {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            transition: transform 0.3s ease;
+        }
+        .video-box:hover .video-label {
+            transform: translateY(-5px);
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .controls .btn {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .controls .btn:hover {
+            transform: scale(1.1);
+        }
+        .controls .btn-danger {
+            width: auto;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .table th {
+            font-weight: 600;
+            color: #333;
+        }
+        .badge {
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .invalid-feedback, .valid-feedback {
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .is-valid ~ .valid-feedback {
+            display: block;
+        }
+        .tooltip-inner {
+            background: #388e3c;
+            color: #fff;
+        }
+        .tooltip.bs-tooltip-top .tooltip-arrow::before {
+            border-top-color: #388e3c;
+        }
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .card-body {
+                padding: 1.5rem;
+            }
+            .video-container {
+                margin: 0 -1rem;
+            }
+            .video-box {
+                margin-bottom: 1rem;
+            }
+            .controls .btn {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.25rem;
+            }
+            .table-responsive {
+                margin: 0 -1rem;
+            }
+            .btn-group-sm > .btn, .btn-sm {
+                padding: 0.25rem 0.5rem;
+            }
+            .d-flex.gap-2 {
+                flex-wrap: wrap;
+            }
+            .d-flex.gap-2 .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            .input-group {
+                width: 100% !important;
+            }
+            .video-label {
+                font-size: 0.75rem;
+                padding: 0.15rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <img src="img/logosemfundo.png" alt="Sistema Hospitalar TCC" style="height: 60px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-chart-line me-2"></i>Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pacientes.html"><i class="fas fa-users me-2"></i>Pacientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prontuarios.html">
+                            <i class="fas fa-file-medical me-2"></i>Prontuários
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="funcionarios.html"><i class="fas fa-user-md me-2"></i>Funcionários</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="telemedicina.html"><i class="fas fa-video me-2"></i>Telemedicina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html"><i class="fas fa-cog me-2"></i>Administração</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-2"></i><span id="userName">Administrador</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="perfil.html"><i class="fas fa-user me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="configuracao.html"><i class="fas fa-cog me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="logout()"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <section id="salaTeleconsulta" class="mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-video me-2"></i>Sala de Telemedicina</h5>
+                    <div class="video-container mb-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="video-box">
+                                    <video id="videoLocal" autoplay muted></video>
+                                    <div class="video-label">Você</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="video-box">
+                                    <video id="videoRemote" autoplay></video>
+                                    <div class="video-label">Paciente</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button class="btn btn-primary" id="btnMicrofone" title="Alternar Microfone">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="btn btn-primary" id="btnCamera" title="Alternar Câmera">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="btn btn-danger" id="encerrarConsulta">
+                            <i class="fas fa-phone-slash me-2"></i>
+                            Encerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-info-circle me-2"></i>Informações do Paciente</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <h6 class="fw-bold"><i class="fas fa-user me-2"></i>Paciente</h6>
+                                    <p id="nomePaciente">Clara Souza</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="mb-3">
+                                        <h6 class="fw-bold"><i class="fas fa-user-md me-2"></i>Profissional</h6>
+                                        <p id="nomeProfissional">Dra. Sofia Ribeiro</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="mb-3">
+                                        <h6 class="fw-bold mb-0"><i class="fas fa-clock me-2"></i>Duração</h6>
+                                        <p id="duracaoConsulta">00:00:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-medical me-2"></i>Prontuário Eletrônico</h5>
+                        <form id="formProntuario" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="queixa">Queixa Principal</label>
+                                        <textarea class="form-control" id="queixa" rows="3" placeholder="Descreva a queixa principal" required
+                                            data-bs-toggle="tooltip" title="Ex.: Dor torácica há 3 dias"></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor, descreva a queixa principal.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Queixa válida!
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="historia">História da Doença Atual</label>
+                                        <textarea class="form-control" id="historia" rows="3" placeholder="Detalhe a história da doença" required
+                                            data-bs-toggle="tooltip" title="Ex.: Início súbito, fatores desencadeantes"></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor, detalhe a história da doença.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            História válida!
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exame">Exame Físico</label>
+                                        <textarea class="form-control" id="exame" rows="3" placeholder="Descreva os achados do exame físico" required
+                                            data-bs-toggle="tooltip" title="Ex.: PA 120/80, FC 70 bpm"></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor, descreva o exame físico.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Exame válido!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="diagnostico">Diagnóstico</label>
+                                        <textarea class="form-control" id="diagnostico" rows="2" placeholder="Insira o diagnóstico" required
+                                            data-bs-toggle="tooltip" title="Ex.: Hipertensão arterial"></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor, insira o diagnóstico.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Diagnóstico válido!
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="conduta">Conduta</label>
+                                        <textarea class="form-control" id="conduta" rows="3" placeholder="Descreva a conduta" required
+                                            data-bs-toggle="tooltip" title="Ex.: Prescrição de losartana 50 mg"></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor, descreva a conduta.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Conduta válida!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Salvar Prontuário
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-prescription me-2"></i>Prescrição</h5>
+                        <form id="formPrescricao" novalidate>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Medicamentos</label>
+                                <div id="listaMedicamentos">
+                                    <div class="input-group mb-2" data-medicamento>
+                                        <input type="text" class="form-control" placeholder="Nome do medicamento" required
+                                            data-bs-toggle="tooltip" title="Ex.: Paracetamol">
+                                        <input type="text" class="form-control" placeholder="Dosagem" required
+                                            data-bs-toggle="tooltip" title="Ex.: 500 mg">
+                                        <input type="text" class="form-control" placeholder="Frequência" required
+                                            data-bs-toggle="tooltip" title="Ex.: 8/8 horas">
+                                        <button type="button" class="btn btn-outline-danger remove-medicamento">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <div class="invalid-feedback">
+                                            Preencha todos os campos do medicamento.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Medicamento válido!
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="btnAddMedicamento">
+                                    <i class="fas fa-plus me-2"></i>Adicionar Medicamento
+                                </button>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Exames</label>
+                                <div id="listaExames">
+                                    <div class="input-group mb-2" data-exame>
+                                        <input type="text" class="form-control" placeholder="Nome do exame" required
+                                            data-bs-toggle="tooltip" title="Ex.: Hemograma completo">
+                                        <button type="button" class="btn btn-outline-danger remove-exame">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <div class="invalid-feedback">
+                                            Preencha o nome do exame.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Exame válido!
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-sm mt-2" id="btnAddExame">
+                                    <i class="fas fa-plus me-2"></i>Adicionar Exame
+                                </button>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-file-medical me-2"></i>Emitir Prescrição
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="agenda" class="mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                        <h5 class="card-title mb-0"><i class="fas fa-calendar me-2"></i>Agenda de Teleconsultas</h5>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNovaTeleconsulta">
+                                <i class="fas fa-plus me-2"></i>Nova Teleconsulta
+                            </button>
+                            <div class="input-group" style="width: 300px;">
+                                <input type="text" class="form-control" placeholder="Buscar...">
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-clock me-2"></i>Horário</th>
+                                    <th><i class="fas fa-user me-2"></i>Paciente</th>
+                                    <th><i class="fas fa-user-md me-2"></i>Médico</th>
+                                    <th><i class="fas fa-stethoscope me-2"></i>Especialidade</th>
+                                    <th><i class="fas fa-info-circle me-2"></i>Status</th>
+                                    <th><i class="fas fa-cog me-2"></i>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaConsultas">
+                                <!-- Consultas carregadas via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="estatisticas" class="mb-5">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Total de Teleconsultas</h6>
+                            <h2 class="mb-0" id="totalConsultas">0</h2>
+                            <small id="variacaoTotal">+0% esta semana</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Confirmadas</h6>
+                            <h2 class="mb-0" id="consultasConfirmadas">0</h2>
+                            <small id="percentualConfirmadas">0% do total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Pendentes</h6>
+                            <h2 class="mb-0" id="consultasPendentes">0</h2>
+                            <small id="percentualPendentes">0% do total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Em Andamento</h6>
+                            <h2 class="mb-0" id="consultasEmAndamento">0</h2>
+                            <small id="percentualEmAndamento">0% do total</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Nova Teleconsulta -->
+        <div class="modal fade" id="modalNovaTeleconsulta" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-video me-2"></i>Nova Teleconsulta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formNovaTeleconsulta" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="paciente">Paciente</label>
+                                    <select class="form-select" id="paciente" required>
+                                        <option value="">Selecione um paciente</option>
+                                        <option value="1">Clara Souza</option>
+                                        <option value="2">Lucas Ferreira</option>
+                                        <option value="3">Fernanda Lima</option>
+                                        <option value="4">Rafael Costa</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione um paciente.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="medico">Médico</label>
+                                    <select class="form-select" id="medico" required>
+                                        <option value="">Selecione um médico</option>
+                                        <option value="1">Dra. Sofia Ribeiro - Cardiologia</option>
+                                        <option value="2">Dr. Lucas Mendes - Neurologia</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione um médico.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="dataHora">Data e Hora</label>
+                                    <input type="datetime-local" class="form-control" id="dataHora" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione data e hora.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="duracao">Duração (minutos)</label>
+                                    <select class="form-select" id="duracao" required>
+                                        <option value="30">30 minutos</option>
+                                        <option value="45">45 minutos</option>
+                                        <option value="60">60 minutos</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor, selecione a duração.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-2"></i>Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" form="formNovaTeleconsulta">
+                            <i class="fas fa-video me-2"></i>Agendar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    </script>
+    <script src="js/telemedicina.js"></script>
+</body>
+</html>
