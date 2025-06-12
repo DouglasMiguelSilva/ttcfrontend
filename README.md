@@ -5,7 +5,7 @@
 
 ## 📘 Contexto
 
-Este projeto é um sistema web de **telemedicina** desenvolvido como **Trabalho de Conclusão de Curso (TCC)** para um curso de _[inserir nome do curso, ex.: Tecnologia em Sistemas para Internet]_ na _[inserir instituição, ex.: Universidade Estácio de Sá]_.  
+Este projeto é um sistema web de **telemedicina** desenvolvido como **Trabalho de Conclusão de Curso (TCC)** .  
 O objetivo é simular um ambiente hospitalar onde **médicos podem realizar teleconsultas**, gerenciar **prontuários eletrônicos**, emitir **prescrições médicas** e **agendar consultas**.  
 
 A aplicação é um **frontend estático**, voltada à **demonstração visual e funcional** de uma solução de telemedicina com foco em usabilidade, simulação de funcionalidades reais e documentação completa.
